@@ -6,8 +6,6 @@
 PWM::PWM(const int pwmChip, const int pwmChannel, int Fmli)
     :period(1000000000/Fmli)
 {
-
-
     QDir baseDir("/sys/class/pwm/pwmchip"+QString::number(pwmChip));
     if (!baseDir.exists())
     {
