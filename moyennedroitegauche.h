@@ -6,12 +6,13 @@
 class MoyenneDroiteGauche : public Comportement
 {
 public:
-    MoyenneDroiteGauche();
+    MoyenneDroiteGauche(correcteur &c1, double rad);
     //correcteur &c;
+    //pointeur vers l'object c de type correcteur
+
 protected:
     float angle;
-    double distanceBord;
-    double nouvelValeur;
+    //angle de virage du vehicule
 
 public slots:
     void process() override;
