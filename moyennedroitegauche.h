@@ -2,21 +2,24 @@
 #define MOYENNEDROITEGAUCHE_H
 
 #include "comportement.h"
+#include "correcteur.h"
 
 class MoyenneDroiteGauche : public Comportement
 {
 public:
-    MoyenneDroiteGauche(/*correcteur &c1,*/ int rad);
-    /*correcteur &c;
-    */
-    //pointeur vers l'object c de type correcteur
+    MoyenneDroiteGauche(Correcteur &c1, int degree);
+
+    Correcteur &c;
+
 
 protected:
     int angle;
-    //angle de virage du vehicule
-    double diffDistance;
-    //différence de distance entre gauche et droite
 
+    //comportement différent
+    /*
+    int angleMin;
+    int angleMax;
+    */
 public slots:
     void process() override;
 };

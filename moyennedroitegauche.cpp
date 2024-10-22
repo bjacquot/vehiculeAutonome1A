@@ -1,22 +1,22 @@
 #include "moyennedroitegauche.h"
-#include <cmath>
 
 using namespace std;
 
-MoyenneDroiteGauche::MoyenneDroiteGauche(/*correcteur &c1,*/ int rad)
-    : Comportement(),/* c{c1},*/ angle(rad)
+MoyenneDroiteGauche::MoyenneDroiteGauche(Correcteur &c1,int degree)
+    : Comportement(distanceLidar), c{c1}, angle(degree)
 {
-    //angle= rad;
+    angle= degree+180;
+    //angle en degree + 180 pour passer au numéro de case
 }
 
 void MoyenneDroiteGauche::process()
 {
-    //correcteur
     double distanceGauche= distanceLidar.at(angle+180);
     double distanceDroite= distanceLidar.at(-angle+180);
 
+
     /*
-    for(int i=90;i<135;i++){
+    for(int i=angleMin;i<angleMax;i++){
         if (distanceGauche< distanceLidar.at(i)){
         distanceGauche= distanceLidar.at(i);
         }
@@ -26,13 +26,15 @@ void MoyenneDroiteGauche::process()
         //recupere la valeur la plus proche de chaque coté, entre 90 et 135 / 225 et 270
         //45 mesures de chaque cotés
     }
-*/
+    */
 
-    diffDistance=distanceGauche-distanceDroite;
-    //diffDistance + quand tourner a gauche
-    //diffDistance - quand tourner a droite
+
+    double entree=(distanceGauche+distanceDroite)/2;
 
 
     //envoit des valeurs vers Correcteur
-    //c.process(diffDistance);
+    int anglef=c.process(entree);
+
+    emit deplacer(0.5,anglef);
+    //envoit a Materiel
 }
