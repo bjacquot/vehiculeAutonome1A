@@ -16,12 +16,6 @@ void WidgetLidar::paintEvent(QPaintEvent *event)
     painter.scale(0.1,0.1);                          // Definit l'echelle du widget *0.1
     painter.setPen(Qt::blue);                        // Définit la couleur des droites
 
-    /*
-    // Calculer les positions centrale de x et y
-    int centreX = width() / 2;
-    int centreY = height() / 2;
-    qDebug()<<"CentreX : "<<centreX<<" Centre y: "<<centreY;*/
-
     for (int i = 0; i < 360; i++) {
         double angle = ((i -180)* 3.14 / 180.0);         // Convertit l'angle en radians
         int distance = distanceLidar[i];                // Récupère la distance mesurée
@@ -29,7 +23,6 @@ void WidgetLidar::paintEvent(QPaintEvent *event)
         int xEnd = distance * cos(angle);     // Calcul de la coordonnée X de la fin de la ligne
         int yEnd = -distance * sin(angle);     // Calcul de la coordonnée Y de la fin de la ligne
         painter.drawLine(0,0, xEnd, yEnd); // Dessine la ligne depuis le centre jusqu'à la position (xEnd, yEnd)
-        //painter.drawLine(centerX, centreY, xEnd,yEnd);
     }
 }
 
