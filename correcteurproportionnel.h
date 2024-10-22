@@ -8,7 +8,7 @@ public:
     CorrecteurProportionnel(double Kp);
     double process(double entree) override;
 
-
+private:
     double Kp;
 
 
