@@ -10,10 +10,11 @@ public:
 
 
     double Kp;
-    double consigne;
 
-private:
-    double erreur;
+
+
+
+
 };
 
 #endif // CORRECTEURPROPORTIONNEL_H

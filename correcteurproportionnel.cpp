@@ -2,7 +2,7 @@
 
 
 CorrecteurProportionnel::CorrecteurProportionnel(double Kp, double consigne)
-    : Kp(Kp), consigne(consigne)
+    : Kp(Kp), consigne(consigne),
 {
 
 }
