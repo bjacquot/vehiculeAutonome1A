@@ -1,6 +1,10 @@
 #include "comportement.h"
+#include<qstring.h>
 
-Comportement::Comportement() {}
+Comportement::Comportement(array<int, 360> &tabdistance)
+    : distanceLidar(tabdistance)
+{
+}
 
 void Comportement::process()
 {

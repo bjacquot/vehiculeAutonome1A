@@ -1,10 +1,15 @@
 #ifndef COMPORTEMENT_H
 #define COMPORTEMENT_H
+#include <QObject>
+// #include "correcteur.h"
 
-class Comportement
+using namespace std;
+
+class Comportement : public  QObject
 {
+    //Q_OBJECT
 public:
-    Comportement();
+    Comportement(array<int,360>&tabdistance);
 
     array<int,360>&distanceLidar;
 
