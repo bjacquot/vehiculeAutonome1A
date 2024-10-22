@@ -5,12 +5,12 @@ class Correcteur {
 public:
 
     Correcteur();
+    virtual double process(double entree);
 
-
+protected:
    double consigne;
 
 
-    virtual double process(double entree);
 };
 
-#endif // CORRECTEUR_H
+#endif // CORRECTEUR__H

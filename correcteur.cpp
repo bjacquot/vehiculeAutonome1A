@@ -5,7 +5,7 @@ Correcteur::Correcteur() {
 
 }
 
-double Correcteur::process(double entree)
+double Correcteur::process(double entree)//
 {
     return entree;
 }
