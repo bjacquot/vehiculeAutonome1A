@@ -1,5 +1,5 @@
-#ifndef COMPORTEMENT_H
-#define COMPORTEMENT_H
+#ifndef COMPORTEMENTN_H
+#define COMPORTEMENTN_H
 #include <QObject>
 // #include "correcteur.h"
 
@@ -22,4 +22,4 @@ signals:
     //envoit vers deplacer (Materiel)
 };
 
-#endif // COMPORTEMENT_H
+#endif // COMPORTEMENTN_H
