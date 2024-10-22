@@ -11,7 +11,7 @@
     Port disponible : 8880 - 8885
     Creé un objet TcpClient, lui donner l'ip, puis le serveur
     Appeler la methode connectToServer pour se connecter
-
+    Si des donnés sont envoyé depuis le serveur elles seront automatiquement reçus dans receivedData
  */
 
 

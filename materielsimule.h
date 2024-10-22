@@ -1,7 +1,7 @@
 #ifndef MATERIELSIMULE_H
 #define MATERIELSIMULE_H
 #include <QString>
-#include "TcpClient.h"
+#include "tcpclient.h"
 
 #include "materiel.h"
 
@@ -9,7 +9,7 @@ class MaterielSimule : public Materiel
 {
 public:
     explicit MaterielSimule(QObject *parent = nullptr);
-    TcpClient tcp;
+    TcpClient tcp; //création du client
 public slots :
     void deplacer(double vitesse, double angle) override;
     void processTcpDatas( QString data);

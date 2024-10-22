@@ -11,7 +11,7 @@
 }
 
 
-void TcpClient::sendDatas(QString datas)
+void TcpClient::sendDatas(QString datas)    // envoyer des donées
 {
     QByteArray block;
     QDataStream out(&block, QIODevice::WriteOnly);
@@ -21,7 +21,7 @@ void TcpClient::sendDatas(QString datas)
     //serveurSocket->write(block);
 }
 
-void TcpClient::connectToServer()
+void TcpClient::connectToServer()       // methode pour se connecter au serveur
 {
     clientSocket.connectToHost(AddrIp,port);
     if (!clientSocket.waitForConnected(3000)) { // Attendre 3 secondes
@@ -32,12 +32,12 @@ void TcpClient::connectToServer()
 }
 
 
-void TcpClient::receiveDatas()
+void TcpClient::receiveDatas()      // recevoir des donées
 {
     dataIn.startTransaction();
     if (!dataIn.commitTransaction()) return;
     QString receivedData;
     dataIn >> receivedData;
     emit newDatas(receivedData);
-    qDebug() << "Message reçu :" << receivedData;
+    //qDebug() << "Message reçu :" << receivedData;     // si vous voulez voir les valeurs reçus
 }
