@@ -5,15 +5,16 @@
 
 class CorrecteurProportionnel : public Correcteur {
 public:
-    CorrecteurProportionnel(double Kp, double consigne);
+    CorrecteurProportionnel(double Kp);
     double process(double entree) override;
 
 
     double Kp;
-    double consigne;
 
-private:
-    double erreur;
+
+
+
+
 };
 
 #endif // CORRECTEURPROPORTIONNEL_H
