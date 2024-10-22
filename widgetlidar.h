@@ -15,6 +15,7 @@ public:
 protected :
     std::array<int, 360> distanceLidar;
     void paintEvent(QPaintEvent *event);
+
 public slots:
     void processTcpDatas(QString data);
 };
