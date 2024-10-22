@@ -5,7 +5,7 @@
 
 class CorrecteurProportionnel : public Correcteur {
 public:
-    CorrecteurProportionnel(double Kp);
+    CorrecteurProportionnel(double _consigne,double Kp);
     double process(double entree) override;
 
 private:
