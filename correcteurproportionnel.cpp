@@ -1,8 +1,8 @@
 #include "correcteurproportionnel.h"
 
 
-CorrecteurProportionnel::CorrecteurProportionnel(double Kp, double consigne)
-    : Kp(Kp), consigne(consigne),
+CorrecteurProportionnel::CorrecteurProportionnel(double Kp)
+    : Kp(Kp)
 {
 
 }
