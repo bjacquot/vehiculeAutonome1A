@@ -1,18 +1,22 @@
 #ifndef SUIVREBORD_H
 #define SUIVREBORD_H
-
+#include"correcteur.h"
 #include "comportement.h"
 
 class SuivreBord : public Comportement
 {
-public:
-    SuivreBord(correcteur &c1, double distanceMur, double rad);
-    correcteur  & c;
-    double distanceBord;
-    double angle;
 
-public slots:
-    void process() override;
+public:
+    SuivreBord(Correcteur &c1, double distanceMur, int degree);
+    void process()override;
+
+private:
+    std::array<int, 360> tabdistance; // Déclaration du tableau
+    Correcteur &c; // Référence à l'objet Correcteur
+    double distanceBord;
+    int angle;
+
+
 };
 
 #endif // SUIVREBORD_H
