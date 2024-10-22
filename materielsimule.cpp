@@ -21,7 +21,7 @@ void MaterielSimule::deplacer(double vitesse, double angle)
 
 void MaterielSimule::processTcpDatas(QString data)
 {
-    //convertion :
+    //convertion : //
     // Séparer la chaîne de caractères avec ';'
     QStringList dataList = data.split(';');
 
