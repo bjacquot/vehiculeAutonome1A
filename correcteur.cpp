@@ -2,6 +2,7 @@
 
 
 Correcteur::Correcteur(double _consigne)
+    :consigne(_consigne)
 {
     consigne = _consigne;
 }

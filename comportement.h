@@ -18,7 +18,7 @@ public slots:
     //récupere de newDistances (Materiel)
 
 signals:
-    void deplacer(double vitesse, double angle);
+    deplacer(double vitesse, double angle);
     //envoit vers deplacer (Materiel)
 };
 
