@@ -14,7 +14,7 @@ public:
     array<int,360>&distanceLidar;
 
 public slots:
-    virtual void process();
+    virtual void process()=0;
     //récupere de newDistances (Materiel)
 
 signals:

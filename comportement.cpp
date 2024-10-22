@@ -6,7 +6,3 @@ Comportement::Comportement(array<int, 360> &tabdistance)
 {
 }
 
-void Comportement::process()
-{
-//correcteur
-}

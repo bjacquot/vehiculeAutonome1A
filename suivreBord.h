@@ -6,8 +6,8 @@
 class SuivreBord : public Comportement
 {
 public:
-    explicit SuivreBord();
-    correcteur  &C;
+    SuivreBord(correcteur &c1, double distanceMur, double rad);
+    correcteur  & c;
     double distanceBord;
     double angle;
 
