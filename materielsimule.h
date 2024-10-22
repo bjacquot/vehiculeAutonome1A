@@ -1,7 +1,7 @@
 #ifndef MATERIELSIMULE_H
 #define MATERIELSIMULE_H
 #include <QString>
-#include "TcpClient.h"
+#include "tcpclient.h"
 
 #include "materiel.h"
 

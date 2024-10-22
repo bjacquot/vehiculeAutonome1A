@@ -3,10 +3,11 @@
 Materiel::Materiel(QObject *parent)
     : QObject{parent}
 {
+    distancesLidar.fill(0);
 }
 
 void Materiel::deplacer(double vitesse, double angle)
 {
-    // Émettre le signal d'état avec la vitesse et l'angle actuels
+    // emet le signal avec la vitesse et l'angle actuels
     emit newState(vitesse, angle);
 }
