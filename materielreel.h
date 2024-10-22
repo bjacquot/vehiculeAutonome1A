@@ -2,9 +2,12 @@
 #define MATERIELREEL_H
 
 
-#include "materiel.h"
+#include "materiel.h" //TODO: FIND + INCLUDE MOTHER CLASS
 #include <QTimer>
 #include "servomoteur.h"
+#include "sl_lidar_driver.h"
+using namespace std;
+using namespace sl;
 
 class MaterielReel : public Materiel
 {
@@ -13,10 +16,15 @@ public:
 
     //TcpClient //tc
 
-    ILidarDriver * drv;
-    //QTimer ticitoc tout les 50 ms
+    ILD *drv;
+    QTimer tictoc; //tictoc.setInterval(periode);
     servomotoeur direction;
     servomoteur vitesse;
+
+    void updateLidar();
+
+public slots:
+    void deplacer(double vitesse, double angle) override;
 };
 
 #endif // MATERIELREEL_H
