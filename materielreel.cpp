@@ -1,13 +1,15 @@
 #include "materielreel.h"
+#include "mainwindow.h"
 #include <QtMath>
+#include <QDebug>
 
 #ifndef _countof
 #define _countof(_Array) (int)(sizeof(_Array) / sizeof(_Array[0]))
 #endif
 
 
-MaterielReel::MaterielReel() {
-    //partie moteur
+MaterielReel::MaterielReel()
+{   //partie moteur
     drv = *createLidarDriver();
     if (!drv) {
         qDebug()<<"erreur";
@@ -44,21 +46,20 @@ MaterielReel::MaterielReel() {
 
     //Qtimer pour le lidar
 
-    tictoc.setInterval(50); //20ms = 20hz
+    tictoc.setInterval(50); //50ms = 20hz
 
-    connect(&tictoc,&QTimer::timeout,
-            this,&MaterielReel::changerEtat); // connecté avec updateLidar()
-
+    QObject::connect(&tictoc,&QTimer::timeout,
+                     this,&MaterielReel::updateLidar); // connecté avec updateLidar()
     tictoc.start();
+
+
 }
 
-void MaterielReel::deplacer(double vitesse, double angle)
+void MaterielReel::deplacer(double vitesse, double angle)//TODO: utiliser connects pour chaque moteur
 {
-    moteurVitesse.setPosition(vitesse);
-    moteurAngle.setPosition(angle);
+    Vitesse.setPosition(vitesse);
+    Direction.setPosition(angle);
 }
-
-
 
 void MaterielReel::updateLidar()
 {
@@ -68,7 +69,7 @@ void MaterielReel::updateLidar()
 
     if (SL_IS_OK(op_result))
     {
-        distances.fill(0);
+        distancesLidar.fill(0);//distances?
         for (int i=0;i<(int)count;i++)
         {
             int angle=round((nodes[i].angle_z_q14 * 90.f) / 16384.f);
@@ -76,17 +77,17 @@ void MaterielReel::updateLidar()
             if ((angle>=-180)and(angle<180))
             {
                 int d=nodes[i].dist_mm_q2/4.0;
-                if (d>0) distances.at(angle+180)=d;
+                if (d>0) distancesLidar.at(angle+180)=d;
             }
         }
         for (int i=0;i<360;i++)
         {
-            if (distances.at(i)==0)
+            if (distancesLidar.at(i)==0)
             {
                 for (int j=1;j<10;j++)
                 {
                     int pos=(i+j)%360;
-                    if (distances.at(pos)!=0) distances.at(i)=distances.at(pos);
+                    if (distancesLidar.at(pos)!=0) distancesLidar.at(i)=distancesLidar.at(pos);
                 }
             }
         }

@@ -9,6 +9,8 @@
 using namespace std;
 using namespace sl;
 
+
+
 class MaterielReel : public Materiel
 {
 public:
@@ -16,15 +18,15 @@ public:
 
     //TcpClient //tc
 
-    ILD *drv;
-    QTimer tictoc; //tictoc.setInterval(periode);
-    servomotoeur direction;
-    servomoteur vitesse;
+    ILidarDriver * drv;
+    QTimer tictoc;          //tictoc.setInterval(periode);
+    ServoMoteur Direction{2,500,1500};
+    ServoMoteur Vitesse{3,500,1500};//TODO: CONNECT SLOT AVEC
 
     void updateLidar();
 
 public slots:
-    void deplacer(double vitesse, double angle) override;
+    void deplacer(double vitesse, double angle) override; //TODO: ACTIVER OVERRIDE QUAND LA CLASSE MERE EST PRETE
 };
 
 #endif // MATERIELREEL_H
