@@ -63,7 +63,7 @@ void TcpClient::receiveDatas()  	// recevoir des donées
     QString receivedData;
     dataIn >> receivedData;
     emit newDatas(receivedData);
-    qDebug() << "Message reçu :" << receivedData; 	// si vous voulez voir les valeurs reçus
+    //qDebug() << "Message reçu :" << receivedData; 	// si vous voulez voir les valeurs reçus
 }
 
 
