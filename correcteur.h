@@ -11,7 +11,6 @@ protected:
    double consigne;
 
 
-
 };
 
-#endif // CORRECTEUR_H
+#endif // CORRECTEUR__H
