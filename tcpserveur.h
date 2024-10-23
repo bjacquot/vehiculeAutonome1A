@@ -19,7 +19,7 @@ private :
 
 public slots :
 
-    void reçoitDatas();
+    void recoitDatas();
     void onNewConnection(/*QTcpSocket  *serveurSocket*/) ;
 signals :
     void newDatas(QString datas);

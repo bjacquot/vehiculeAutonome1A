@@ -7,7 +7,7 @@ TcpServeur::TcpServeur():monServeur(new QTcpServer(this))  {
     monServeur.listen((QHostAddress::AnyIPv4),8884);
 
     connect(&monServeur,SIGNAL(newConnection()),this,SLOT(onNewConnection()));
-    //connect(&serveurSocket,&newDatas, this, &TcpServeur::reçoitDatas);
+    //connect(&serveurSocket,&QTcpSocket::readyRead, this, &TcpServeur::reçoitDatas);
 }
 
 void TcpServeur::sendDatas(QString _datas)
@@ -21,7 +21,7 @@ void TcpServeur::sendDatas(QString _datas)
     serveurSocket->write(block);
 }
 
-void TcpServeur::reçoitDatas()
+void TcpServeur::recoitDatas()
 {
     dataln.startTransaction();
     QString donnee;
