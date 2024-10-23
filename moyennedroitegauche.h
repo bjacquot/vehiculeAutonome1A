@@ -7,19 +7,24 @@
 class MoyenneDroiteGauche : public Comportement
 {
 public:
-    MoyenneDroiteGauche(Correcteur &c1, int degree);
+    MoyenneDroiteGauche(array <int,360> &_distanceLidar,Correcteur &c1, double _vitesse, int _angle);
 
+
+
+    double distanceGauche;
+    double distanceDroite;
     Correcteur &c;
-
 
 protected:
     int angle;
+    double speed;
 
     //comportement différent
     /*
     int angleMin;
     int angleMax;
     */
+
 public slots:
     void process() override;
 };

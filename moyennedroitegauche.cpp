@@ -1,30 +1,32 @@
 #include "moyennedroitegauche.h"
+#include "QDebug"
+
 
 using namespace std;
 
-MoyenneDroiteGauche::MoyenneDroiteGauche(Correcteur &c1,int degree)
-    : Comportement(distanceLidar), c{c1}, angle(degree)
+MoyenneDroiteGauche::MoyenneDroiteGauche(array<int,360>&distanceLidar, Correcteur &c1, double _vitesse, int _angle)
+    : Comportement(distanceLidar), c{c1}, speed(_vitesse), angle(_angle)
 {
-    angle= degree+180;
-    //angle en degree + 180 pour passer au numéro de case
+
 }
 
 void MoyenneDroiteGauche::process()
 {
     double distanceGauche= distanceLidar.at(angle+180);
     double distanceDroite= distanceLidar.at(-angle+180);
-
+    //  qDebug() << "la distance au bord" <<distanceGauche;
+    distanceGauche= distanceLidar.at(angle+180);
+    distanceDroite= distanceLidar.at(-angle+180);
 
     /*
     for(int i=angleMin;i<angleMax;i++){
-        if (distanceGauche< distanceLidar.at(i)){
-        distanceGauche= distanceLidar.at(i);
+        if (distanceGauche< distanceLidar.at(i+180)){
+        distanceGauche= distanceLidar.at(i+180);
         }
-        if (distanceDroite< distanceLidar.at(i+135)){
-        distanceDroite= distanceLidar.at(i);
+        if (distanceDroite< distanceLidar.at(-i+180)){
+        distanceDroite= distanceLidar.at(-i+180);
         }
-        //recupere la valeur la plus proche de chaque coté, entre 90 et 135 / 225 et 270
-        //45 mesures de chaque cotés
+        //recupere la valeur la plus proche de chaque coté, entre angleMin et angleMax
     }
     */
 
@@ -33,8 +35,8 @@ void MoyenneDroiteGauche::process()
 
 
     //envoit des valeurs vers Correcteur
-    int anglef=c.process(entree);
+    int direction=c.process(entree);
 
-    emit deplacer(0.5,anglef);
+    emit deplacer(speed,direction);
     //envoit a Materiel
 }
