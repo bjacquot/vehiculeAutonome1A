@@ -7,14 +7,13 @@ class SuivreBord : public Comportement
 {
 
 public:
-    SuivreBord(Correcteur &c1, int degree);
+    SuivreBord(array<int,360>&_distanceLidar, Correcteur &c1, int _angle, double _vitesse);
     void process() override;
 
 private:
-    std::array<int, 360> tabdistance; // Déclaration du tableau
     Correcteur &c; // Référence à l'objet Correcteur
-    double distanceBord;
     int angle;
+    double vitesse;
 
 
 };
