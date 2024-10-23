@@ -2,7 +2,6 @@
 #define MATERIELSIMULE_H
 #include <QString>
 #include "tcpclient.h"
-
 #include "materiel.h"
 
 class MaterielSimule : public Materiel

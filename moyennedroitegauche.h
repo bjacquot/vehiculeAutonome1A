@@ -1,7 +1,7 @@
 #ifndef MOYENNEDROITEGAUCHE_H
 #define MOYENNEDROITEGAUCHE_H
 
-#include "comportement.h"
+#include "comportementn.h"
 #include "correcteur.h"
 
 class MoyenneDroiteGauche : public Comportement
