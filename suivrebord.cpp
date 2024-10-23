@@ -1,4 +1,4 @@
-#include "suivreBord.h"
+#include "suivrebord.h"
 #include <cmath>  // pour utiliser asin
 
 SuivreBord::SuivreBord(Correcteur &c1, int degree)
