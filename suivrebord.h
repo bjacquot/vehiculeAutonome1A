@@ -1,7 +1,7 @@
 #ifndef SUIVREBORD_H
 #define SUIVREBORD_H
 #include"correcteur.h"
-#include "comportement.h"
+#include "comportementn.h"
 
 class SuivreBord : public Comportement
 {
