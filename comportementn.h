@@ -9,14 +9,14 @@ class Comportement : public  QObject
 {
     Q_OBJECT
 public:
-    Comportement(array<int,360>&tabdistance);
-
+    Comportement(array<int,360>&_distanceLidar);
+    
     array<int,360>&distanceLidar;
-
+    
 public slots:
     virtual void process()=0;
     //récupere de newDistances (Materiel)
-
+    
 signals:
     void deplacer(double vitesse, double angle);
     //envoit vers deplacer (Materiel)
