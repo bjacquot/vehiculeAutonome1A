@@ -19,7 +19,7 @@ void WidgetLidar::paintEvent(QPaintEvent *event)
     int centreX = width() / 2;
     int centreY = height() / 2;
     painter.translate(centreX,centreY);              //Pour configuerer l'origine de tracer
-    painter.scale(0.1,0.1);
+    painter.scale(0.15,0.15);
 
     //Calcul + tracer
     for (int i = 0; i < 360; i++) {
