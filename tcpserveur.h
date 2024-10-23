@@ -10,16 +10,12 @@ class TcpServeur: public QObject
 {
 Q_OBJECT
 public:
-    TcpServeur(/*int _monNumeroDePort*/);
-    //int monNumeroDePort;
+    TcpServeur();
     QTcpSocket  *serveurSocket;
     void sendDatas(QString _datas);
-    //QDataStream getDataln() const;
     QDataStream dataln;
     QTcpServer monServeur;
 private :
-
-
 
 public slots :
 

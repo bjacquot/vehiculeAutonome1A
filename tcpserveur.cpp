@@ -2,17 +2,12 @@
 #include "QDebug"
 
 
-TcpServeur::TcpServeur(/*int _monNumeroDePort*/):monServeur(new QTcpServer(this))  {
-    //monNumeroDePort=_monNumeroDePort;
+TcpServeur::TcpServeur():monServeur(new QTcpServer(this))  {
+
     monServeur.listen((QHostAddress::AnyIPv4),8884);
 
-
-
-    //connect(&monServeur,&QTcpServer::newConnection,this,&TcpServeur::onNewConnection);
     connect(&monServeur,SIGNAL(newConnection()),this,SLOT(onNewConnection()));
-
-
-
+    //connect(&serveurSocket,&newDatas, this, &TcpServeur::reçoitDatas);
 }
 
 void TcpServeur::sendDatas(QString _datas)
@@ -25,20 +20,21 @@ void TcpServeur::sendDatas(QString _datas)
     qDebug()<<"message envoyé :"<<datas;
     serveurSocket->write(block);
 }
+
 void TcpServeur::reçoitDatas()
 {
     dataln.startTransaction();
-    if (!dataln.commitTransaction()) return;
     QString donnee;
     dataln >> donnee;
+    if (!dataln.commitTransaction()) return;
     emit newDatas(donnee);
     qDebug() << "Message reçu :" << donnee;
 }
 
 void TcpServeur::onNewConnection()
 {
-   // connect(&monServeur,&QTcpSocket::readyRead, this, &TcpServeur::reçoitDatas);
+
     qDebug()<<"connexion";
     serveurSocket = monServeur.nextPendingConnection();
-
+    dataln.setDevice(serveurSocket);
 }
