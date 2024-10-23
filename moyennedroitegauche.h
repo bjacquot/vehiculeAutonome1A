@@ -7,7 +7,7 @@
 class MoyenneDroiteGauche : public Comportement
 {
 public:
-    MoyenneDroiteGauche(array <int,360> &_distanceLidar,Correcteur &c1, double _vitesse, int _angle);
+    MoyenneDroiteGauche(array <int,360> &_distanceLidar,Correcteur &c1, double _angle, double _vitesse);
 
 
 
