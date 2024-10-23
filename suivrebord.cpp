@@ -1,11 +1,13 @@
 #include "suivrebord.h"
 #include <cmath>  // pour utiliser asin
 
-SuivreBord::SuivreBord(Correcteur &c1, int degree)
-    : Comportement(tabdistance), c{c1},angle(degree)
+
+SuivreBord::SuivreBord(array<int,360>&distanceLidar, Correcteur &c1, int _angle, double _vitesse)
+    : Comportement(distanceLidar), c{c1},angle(_angle), vitesse (_vitesse)
 {
 
 }
+
 
 void SuivreBord::process()
 {
