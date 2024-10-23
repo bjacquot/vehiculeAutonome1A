@@ -8,7 +8,7 @@
 
 class TcpServeur: public QObject
 {
-Q_OBJECT
+    Q_OBJECT
 public:
     TcpServeur();
     QTcpSocket  *serveurSocket;

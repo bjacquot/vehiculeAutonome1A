@@ -6,8 +6,8 @@ TcpServeur::TcpServeur():monServeur(new QTcpServer(this))  {
 
     monServeur.listen((QHostAddress::AnyIPv4),8884);
 
-    connect(&monServeur,SIGNAL(newConnection()),this,SLOT(onNewConnection()));
-    //connect(&serveurSocket,&QTcpSocket::readyRead, this, &TcpServeur::reçoitDatas);
+    connect(&monServeur,&QTcpServer::newConnection,this,&TcpServeur::onNewConnection);
+    connect(serveurSocket,&QTcpSocket::readyRead, this, &TcpServeur::recoitDatas);
 }
 
 void TcpServeur::sendDatas(QString _datas)
@@ -18,15 +18,15 @@ void TcpServeur::sendDatas(QString _datas)
     out.setVersion(QDataStream::Qt_5_0);
     out << datas;
     qDebug()<<"message envoyé :"<<datas;
-    serveurSocket->write(block);
+                                          serveurSocket->write(block);
 }
 
 void TcpServeur::recoitDatas()
 {
     dataln.startTransaction();
+    if (!dataln.commitTransaction()) return;
     QString donnee;
     dataln >> donnee;
-    if (!dataln.commitTransaction()) return;
     emit newDatas(donnee);
     qDebug() << "Message reçu :" << donnee;
 }
