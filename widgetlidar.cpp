@@ -13,9 +13,13 @@ void WidgetLidar::paintEvent(QPaintEvent *event)
     QPainter painter(this);                          // Crée un objet QPainter pour dessiner sur le widget
     painter.fillRect(rect(), Qt::white);             // On ajoute un fond blanc sur le widget
     painter.setRenderHint(QPainter::Antialiasing);   // Pour rendre plus jolie le tracer
-    painter.translate(1920/10,1080/10);              //Pour configuerer l'origine de tracer
-    painter.scale(0.2,0.2);                        // Definit l'echelle du widget *0.1
     painter.setPen(Qt::blue);                        // Définit la couleur des droites
+
+    // Calculer les positions centrale de x et y
+    int centreX = width() / 2;
+    int centreY = height() / 2;
+    painter.translate(centreX,centreY);              //Pour configuerer l'origine de tracer
+    painter.scale(0.1,0.1);
 
     //Calcul + tracer
     for (int i = 0; i < 360; i++) {
