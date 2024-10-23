@@ -7,7 +7,7 @@ using namespace std;
 
 class Comportement : public  QObject
 {
-    //Q_OBJECT
+    Q_OBJECT
 public:
     Comportement(array<int,360>&tabdistance);
 
