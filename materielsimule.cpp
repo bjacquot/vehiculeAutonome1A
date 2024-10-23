@@ -23,14 +23,29 @@ void MaterielSimule::processTcpDatas(QString data)
 {
     //convertion : //
     // Séparer la chaîne de caractères avec ';'
+    //qDebug() << data;
+
     QStringList dataList = data.split(';');
+    //qDebug() << dataList;
+
 
     // Conversion de QString  en int dans mon array
-    for (int i = 0; i < 360; ++i)
-    {
-        distancesLidar[i] = dataList[i].toInt();
-    }
 
+    // if (dataList.size() < 360) {
+    //     qDebug() << "Erreur : données reçues insuffisantes, taille:" << dataList.size();
+    //     return;
+    // }
+
+    // Conversion de QString en int dans mon array
+    if(!data.isEmpty())
+    {
+        for (int i = 0; i < 360; ++i) {
+            distancesLidar.at(i) = dataList.at(i).toInt();
+            //qDebug() << dataList[i];
+
+        }
+    }
+    //qDebug() << distancesLidar.at(360);
     // émet le signal avec les nouvelles distances pour la classe Comportement
     emit newDistances();
 }
