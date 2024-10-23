@@ -9,7 +9,8 @@
 
 
 MaterielReel::MaterielReel()
-{   //partie moteur
+{
+    //partie moteur
     drv = *createLidarDriver();
     if (!drv) {
         qDebug()<<"erreur";
@@ -93,4 +94,10 @@ void MaterielReel::updateLidar()
         }
     }
 
+}
+
+void MaterielReel::test()
+{
+    Vitesse.setPosition(0);
+    Direction.setPosition(0);
 }
