@@ -2,12 +2,13 @@
 #define MATERIELSIMULE_H
 #include <QString>
 #include "tcpclient.h"
+
 #include "materiel.h"
 
 class MaterielSimule : public Materiel
 {
 public:
-    explicit MaterielSimule(QObject *parent = nullptr);
+    explicit MaterielSimule(int port,QObject *parent = nullptr);
     TcpClient tcp; //création du client
 public slots :
     void deplacer(double vitesse, double angle) override;
