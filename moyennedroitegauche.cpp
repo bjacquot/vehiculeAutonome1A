@@ -4,8 +4,8 @@
 
 using namespace std;
 
-MoyenneDroiteGauche::MoyenneDroiteGauche(array<int,360>&distanceLidar, Correcteur &c1, double _vitesse, int _angle)
-    : Comportement(distanceLidar), c{c1}, speed(_vitesse), angle(_angle)
+MoyenneDroiteGauche::MoyenneDroiteGauche(array<int,360>&distanceLidar, Correcteur &c1, double _angle, int _vitesse)
+    : Comportement(distanceLidar), c{c1}, angle(_angle), speed(_vitesse)
 {
 
 }
