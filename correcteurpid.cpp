@@ -1,8 +1,8 @@
 #include "correcteurpid.h"
 #include <QtGlobal>
 
-CorrecteurPID::CorrecteurPID(double kp, double ki, double kd)
-    : Kp(kp), Ki(ki), Kd(kd) {
+CorrecteurPID::CorrecteurPID(double consigne,double kp, double ki, double kd)
+    :Correcteur(consigne), Kp(kp), Ki(ki), Kd(kd) {
 }
 
 double CorrecteurPID::process(double entree) {

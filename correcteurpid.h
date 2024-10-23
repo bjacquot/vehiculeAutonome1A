@@ -5,7 +5,7 @@
 
 class CorrecteurPID : public Correcteur {
 public:
-    CorrecteurPID(double kp, double ki, double kd);
+    CorrecteurPID(double consigne,  double kp, double ki, double kd);
 
     virtual double process(double entree);
 
