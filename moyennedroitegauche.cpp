@@ -5,7 +5,7 @@
 using namespace std;
 
 MoyenneDroiteGauche::MoyenneDroiteGauche(array<int,360>&distanceLidar, Correcteur &c1, int _angle, double _vitesse)
-    : Comportement(distanceLidar), c{c1},angle(_angle), speed (_vitesse)
+    : Comportement(distanceLidar), c{c1},angle(_angle), vitesse (_vitesse)
 {
 
 }
@@ -15,8 +15,7 @@ void MoyenneDroiteGauche::process()
 {
     double distanceGauche= distanceLidar.at(angle+180);
     double distanceDroite= distanceLidar.at(-angle+180);
-    double distanceDevant= distanceLidar.at(180+180);
-    //qDebug() << "la distance au bord" <<distanceGauche;
+    double distanceDevant= distanceLidar.at(180);
 
 /*
     double angleMin=60;
@@ -38,6 +37,7 @@ void MoyenneDroiteGauche::process()
 
     //envoit des valeurs vers Correcteur
     int direction=c.process(entree);
+
     qDebug()<< distanceGauche <<distanceDroite <<entree << direction;
 
     if (direction>1)
@@ -53,13 +53,13 @@ void MoyenneDroiteGauche::process()
         direction=direction;
     }
 
-    speed=distanceDevant/1000;
+    vitesse=distanceDevant/1000;
     //fait changer la vitesse du robot en fonction de la distance du mur de devant
 
+    qDebug()<< distanceGauche <<distanceDroite;
 
-
-    //direction = 0;
-    //speed = 0;
-    emit deplacer(speed,direction);
+    //direction = -1;
+    //vitesse = 0.5;
+    emit deplacer(vitesse,direction);
     //envoit a Materiel
 }
