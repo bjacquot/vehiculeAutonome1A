@@ -2,12 +2,13 @@
 #include "QDebug"
 
 
-TcpServeur::TcpServeur():monServeur(new QTcpServer(this))  {
+TcpServeur::TcpServeur()
+    :monServeur(this)
+{
 
     monServeur.listen((QHostAddress::AnyIPv4),8884);
 
     connect(&monServeur,&QTcpServer::newConnection,this,&TcpServeur::onNewConnection);
-    connect(serveurSocket,&QTcpSocket::readyRead, this, &TcpServeur::recoitDatas);
 }
 
 void TcpServeur::sendDatas(QString _datas)
@@ -18,7 +19,7 @@ void TcpServeur::sendDatas(QString _datas)
     out.setVersion(QDataStream::Qt_5_0);
     out << datas;
     qDebug()<<"message envoyé :"<<datas;
-                                          serveurSocket->write(block);
+    serveurSocket->write(block);
 }
 
 void TcpServeur::recoitDatas()
@@ -37,4 +38,5 @@ void TcpServeur::onNewConnection()
     qDebug()<<"connexion";
     serveurSocket = monServeur.nextPendingConnection();
     dataln.setDevice(serveurSocket);
+    connect(serveurSocket,&QTcpSocket::readyRead, this, &TcpServeur::recoitDatas);
 }
