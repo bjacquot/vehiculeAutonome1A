@@ -12,13 +12,13 @@ class TcpServeur: public QObject
 public:
     TcpServeur();
     QTcpSocket  *serveurSocket=nullptr;
-    void sendDatas(QString _datas);
+    
     QDataStream dataln;
     QTcpServer monServeur;
 private :
 
 public slots :
-
+    void sendDatas(QString _datas);
     void recoitDatas();
     void onNewConnection(/*QTcpSocket  *serveurSocket*/) ;
 signals :
