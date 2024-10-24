@@ -15,7 +15,7 @@ public:
 
 protected:
     int angle;
-    double speed;
+    double vitesse;
 
     //comportement différent
     /*
