@@ -11,7 +11,7 @@ class TcpServeur: public QObject
     Q_OBJECT
 public:
     TcpServeur();
-    QTcpSocket  *serveurSocket;
+    QTcpSocket  *serveurSocket=nullptr;
     void sendDatas(QString _datas);
     QDataStream dataln;
     QTcpServer monServeur;
@@ -26,3 +26,4 @@ signals :
 };
 
 #endif // TCPSERVEUR_H
+
