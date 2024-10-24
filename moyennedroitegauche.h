@@ -7,24 +7,19 @@
 class MoyenneDroiteGauche : public Comportement
 {
 public:
-    MoyenneDroiteGauche(array<int,360> &_distanceLidar,Correcteur &c1, int _angle, double _vitesse);
+    MoyenneDroiteGauche(array<int,360>&distanceLidar, Correcteur &c1,int _angle1, int _angle2, double _vitesse );
+    void process() override;
 
-    double distanceGauche;
-    double distanceDroite;
-    Correcteur &c;
+    bool etatVoiture=false;
+
 
 protected:
-    int angle;
+    Correcteur &c;
+    int angle1;
+    int angle2;
     double vitesse;
-
-    //comportement différent
-    /*
-    int angleMin;
-    int angleMax;
-    */
-
 public slots:
-    void process() override;
+     void controlerEtat(QString message);
 };
 
 #endif // MOYENNEDROITEGAUCHE_H
