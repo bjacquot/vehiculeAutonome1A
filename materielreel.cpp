@@ -1,5 +1,4 @@
 #include "materielreel.h"
-#include "mainwindow.h"
 #include <QtMath>
 #include <QDebug>
 
@@ -8,9 +7,10 @@
 #endif
 
 
-MaterielReel::MaterielReel()
-{
-    //partie moteur
+MaterielReel::MaterielReel(QString ip,int port)
+    :tcp(ip,8880)
+
+{   //partie moteur
     drv = *createLidarDriver();
     if (!drv) {
         qDebug()<<"erreur";
@@ -94,10 +94,4 @@ void MaterielReel::updateLidar()
         }
     }
 
-}
-
-void MaterielReel::test()
-{
-    Vitesse.setPosition(0);
-    Direction.setPosition(0);
 }
