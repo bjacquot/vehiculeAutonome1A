@@ -92,6 +92,7 @@ void MaterielReel::updateLidar()
                 }
             }
         }
+        emit newDistances();
     }
 
 }
