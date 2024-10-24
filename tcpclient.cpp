@@ -61,8 +61,11 @@ void TcpClient::receiveDatas()  	// recevoir des donées
     dataIn.startTransaction();
     if (!dataIn.commitTransaction()) return;
     QString receivedData;
-    dataIn >> receivedData;
-    emit newDatas(receivedData);
+    while (!dataIn.atEnd())
+    {
+        dataIn >> receivedData;
+        if (receivedData.size()>0) emit newDatas(receivedData);
+    }
     //qDebug() << "Message reçu :" << receivedData; 	// si vous voulez voir les valeurs reçus
 }
 
